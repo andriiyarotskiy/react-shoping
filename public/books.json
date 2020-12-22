@@ -1,0 +1,154 @@
+[
+  {
+    "id": 0,
+    "title": "Происхождение",
+    "author": "Дэн Браун",
+    "image": "https://source.unsplash.com/random",
+    "price": 710,
+    "rating": 3
+  },
+  {
+    "id": 1,
+    "title": "1984",
+    "author": "Джордж Оруэлл",
+    "price": 415,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 5
+  },
+  {
+    "id": 2,
+    "title": "Девушка в тумане",
+    "author": "Донато Карризи",
+    "price": 464,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 4
+  },
+  {
+    "id": 3,
+    "title": "Империя должна умереть",
+    "author": "Михаил Зыгарь",
+    "price": 741,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 3
+  },
+  {
+    "id": 4,
+    "title": "Земное притяжение",
+    "author": "Татьяна Устинова",
+    "price": 317,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 1
+  },
+  {
+    "id": 5,
+    "title": "Зулейха открывает глаза",
+    "author": "Гузель Яхина",
+    "price": 254,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 0
+  },
+  {
+    "id": 6,
+    "title": "Очаровательный кишечник. Как самый могущественный орган управляет нами",
+    "author": "Джулия Эндерс",
+    "price": 573,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 4
+  },
+  {
+    "id": 7,
+    "title": "iPhuck 10",
+    "author": "Виктор Пелевин",
+    "price": 246,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 0
+  },
+  {
+    "id": 8,
+    "title": "7 навыков высокоэффективных людей: Мощные...",
+    "author": "Стивен Кови",
+    "image": "https://source.unsplash.com/random",
+    "price": 347,
+    "rating": 5
+  },
+  {
+    "id": 9,
+    "title": "Девушка во льду",
+    "author": "Роберт Брындза",
+    "price": 882,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 2
+  },
+  {
+    "id": 10,
+    "title": "Магия утра. Как первый час дня определяет ваш успех",
+    "author": "Хэл Элрод",
+    "price": 829,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 1
+  },
+  {
+    "id": 11,
+    "title": "Азиатская европеизация. История Российского государства. Царь Петр...",
+    "author": "Борис Акунин",
+    "price": 389,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 2
+  },
+  {
+    "id": 12,
+    "title": "Ведьмак (сборник)",
+    "author": "Анджей Сапковский",
+    "price": 424,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 3
+  },
+  {
+    "id": 13,
+    "title": "Атлант расправил плечи",
+    "author": "Айн Рэнд",
+    "price": 157,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 2
+  },
+  {
+    "id": 14,
+    "title": "Цена вопроса. Том 1",
+    "author": "Александра Маринина",
+    "price": 664,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 0
+  },
+  {
+    "id": 15,
+    "title": "Исчезнувшая",
+    "author": "Гиллиан Флинн",
+    "price": 476,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 4
+  },
+  {
+    "id": 17,
+    "title": "Метро 2035",
+    "author": "Дмитрий Глуховский",
+    "price": 837,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 4
+  },
+  {
+    "id": 18,
+    "title": "Снеговик",
+    "author": "Ю Несбё",
+    "price": 796,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 5
+  },
+  {
+    "id": 19,
+    "title": "Как тренировать память. Не думайте о памяти – лучше используйте ее на все сто!",
+    "author": "Джонатан Хэнкок",
+    "price": 399,
+    "image" : "https://source.unsplash.com/random",
+    "rating": 5
+  }
+]
