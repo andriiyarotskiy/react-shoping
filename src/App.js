@@ -22,6 +22,13 @@ const sortBy = (arr, filterBy) => {
             return arr
     }
 }
+// Фильтрация массива по полю search
+const filterFunc = (arr, searchValue) => {
+    return arr.filter(el => {
+        return el.title.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0 ||
+            el.author.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
+    });
+}
 
 const App = () => {
     const isReady = useSelector(state => state.books.isReady)
@@ -31,17 +38,6 @@ const App = () => {
 
     const [booksLocal, setBooksLocal] = useState([])
 
-    useEffect(() => {
-        // Сортировка по filterBy
-        const sortedBooks = sortBy(booksLocal, filterBy)
-        if (!searchQuery) {
-            dispatch(setBooks(sortedBooks))
-        }
-        // Фильтрация сортированного массива
-        const filteredBooks = filterFunc(sortedBooks, searchQuery)
-        dispatch(setBooks(filteredBooks))
-    }, [dispatch, booksLocal, searchQuery, filterBy])
-
     //Fetch data from api
     useEffect(() => {
         axios.get('/books.json').then(res => {
@@ -50,13 +46,21 @@ const App = () => {
         })
     }, [dispatch])
 
-    // Фильтрация массива по полю search
-    const filterFunc = (arr, searchValue) => {
-        return arr.filter(el => {
-            return el.title.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0 ||
-                el.author.toLowerCase().indexOf(searchValue.toLowerCase()) >= 0
-        });
-    }
+
+    useEffect(() => {
+        // Сортировка по filterBy
+        const sortedBooks = sortBy(booksLocal, filterBy)
+        if (!searchQuery) {
+            dispatch(setBooks(sortedBooks))
+        } else {
+            const filteredBooks = filterFunc(sortedBooks, searchQuery)
+            dispatch(setBooks(filteredBooks))
+        }
+        // Фильтрация сортированного массива
+
+
+    }, [dispatch, booksLocal, searchQuery, filterBy])
+
 
     const onChangeHandler = (e) => {
         let searchValue = e.currentTarget.value

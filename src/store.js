@@ -14,4 +14,4 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer, applyMiddleware(ThunkMiddleware, logger))
 
 // window.store = store
-console.log(store.getState())
+// console.log(store.getState())
