@@ -1,9 +1,4 @@
-const initialState = {
-    items: null,
-    isReady: false,
-}
-
-export const booksReducer = (state = initialState, action) => {
+export const booksReducer = (state , action) => {
     switch (action.type) {
         case 'SET_BOOKS': {
             return {

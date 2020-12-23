@@ -1,18 +1,20 @@
 import React from 'react';
-import {Icon, Menu, List, Button, Image, Popup} from 'semantic-ui-react';
-import {useDispatch, useSelector} from "react-redux";
+import {Button, Icon, Image, List, Menu, Popup} from 'semantic-ui-react';
 import _ from 'lodash'
 import {removeFromCart} from "../actions/cart-AC";
+import {useSelectCtxt} from "../ContextProvider/ContextProvider";
 
 
+const CartComponent = ({title, id, image, ...props}) => {
 
-const CartComponent = ({title, id, image, ...props})=> {
-    const dispatch = useDispatch()
+    const state = useSelectCtxt()
+    const dispatchCart = state.dispatchCart
+
     return (
         <List selection verticalAlign='middle'>
             <List.Item>
                 <List.Content floated='right'>
-                    <Button onClick={()=> dispatch(removeFromCart(id))} color="red">Remove</Button>
+                    <Button onClick={() => dispatchCart(removeFromCart(id))} color="red">Remove</Button>
                 </List.Content>
                 <Image avatar src={image}/>
                 <List.Content>{title}</List.Content>
@@ -24,16 +26,18 @@ const CartComponent = ({title, id, image, ...props})=> {
 
 const NavBar = React.memo(() => {
 
-    const totalPrice = useSelector(state => state.cart.items.reduce((total, book) =>
-        (total + book.price), 0)
-    )
-    const items = useSelector(state => state.cart.items)
+    const state = useSelectCtxt()
+
+    const {items} = state.cart
+
+    const totalPrice = items.reduce((total, book) => (total + book.price), 0)
 
     const uniqId = _.uniqBy(items, o => o.id)
 
     return (
         <Menu>
-            <Menu.Item name='browse' onClick={() => {}}>
+            <Menu.Item name='browse' onClick={() => {
+            }}>
                 Books store
             </Menu.Item>
 
@@ -46,10 +50,12 @@ const NavBar = React.memo(() => {
                     Total: &nbsp; <b>{totalPrice}</b> &nbsp;<Icon name='euro'/>
                 </Menu.Item>
                 <Popup
+                    disabled={!!(uniqId.length < 1)}
                     position='bottom right'
                     flowing hoverable
                     trigger={
-                        <Menu.Item name="help" onClick={()=>{}}>
+                        <Menu.Item name="help" onClick={() => {
+                        }}>
                             Cart (<b> {items.length} </b>)
                         </Menu.Item>
                     }

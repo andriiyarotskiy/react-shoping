@@ -1,19 +1,20 @@
 import React from 'react';
-import {Card, Icon, Image, Button} from 'semantic-ui-react'
-import {useDispatch, useSelector} from "react-redux";
+import {Button, Card, Icon, Image} from 'semantic-ui-react'
 import {addToCart} from "../actions/cart-AC";
+import {useSelectCtxt} from "../ContextProvider/ContextProvider";
 
 const BookCard = React.memo(({title, author, price, image, ...props}) => {
     const book = {title, author, price, image, ...props}
-    const dispatch = useDispatch()
 
-    const addedCount = useSelector(state => state.cart.items.reduce((count, items) =>
-        count + (items.id === props.id ? 1 : 0), 0))
+    const state = useSelectCtxt()
+    const addedCount = state.cart.items.reduce((count, items) =>
+        count + (items.id === props.id ? 1 : 0), 0)
+
+    const dispatchCart = state.dispatchCart
 
     const addOnClick = () => {
-        dispatch(addToCart(book))
+        dispatchCart(addToCart(book))
     }
-
     return (
         <Card>
             <Image src={image} size="medium" wrapped/>

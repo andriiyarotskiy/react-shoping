@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-import {useDispatch, useSelector} from "react-redux";
 import {setBooks} from "./actions/books-AC";
 import NavBar from "./components/Menu";
 import {Card, Container} from "semantic-ui-react";
@@ -8,6 +7,7 @@ import BookCard from "./components/BookCard";
 import Filter from "./components/Filter";
 import _ from 'lodash';
 import {setFilter, setSearchQuery} from "./actions/filter-AC";
+import {useSelectCtxt} from "./ContextProvider/ContextProvider";
 
 //Sort Function
 const sortBy = (arr, filterBy) => {
@@ -31,10 +31,16 @@ const filterFunc = (arr, searchValue) => {
 }
 
 const App = () => {
-    const isReady = useSelector(state => state.books.isReady)
-    const items = useSelector(state => state.books.items)
-    const {filterBy, searchQuery} = useSelector(state => state.filter)
-    const dispatch = useDispatch()
+
+
+    const state = useSelectCtxt()
+
+    const {isReady, items} = state.books
+    const dispatch = state.dispatch
+
+
+    const {filterBy, searchQuery} = state.filter
+    const dispatchFilter = state.dispatchFilter
 
     const [booksLocal, setBooksLocal] = useState([])
 
@@ -64,7 +70,7 @@ const App = () => {
 
     const onChangeHandler = (e) => {
         let searchValue = e.currentTarget.value
-        dispatch(setSearchQuery(searchValue))
+        dispatchFilter(setSearchQuery(searchValue))
         const filteredBooks = filterFunc(items, searchValue)
         dispatch(setBooks(filteredBooks))
     }
@@ -72,25 +78,27 @@ const App = () => {
     //SORT // Сортировка на клик по полям
     const handleItemClick = (e, {name}) => {
         const sortedBooks = sortBy(items, name)
-        dispatch(setFilter(name))
+        dispatchFilter(setFilter(name))
         dispatch(setBooks(sortedBooks))
     }
     //SORT
 
 
     return (
-        <Container>
-            <NavBar/>
-            <Filter filterBy={filterBy}
-                    handleItemClick={handleItemClick}
-                    onChangeHandler={onChangeHandler}
-            />
-            <Card.Group itemsPerRow={4}>
-                {!isReady ? 'Loading...' : items.map(book => (
-                    <BookCard key={book.id} {...book}/>
-                ))}
-            </Card.Group>
-        </Container>
+
+            <Container>
+                <NavBar/>
+                <Filter filterBy={filterBy}
+                        handleItemClick={handleItemClick}
+                        onChangeHandler={onChangeHandler}
+                />
+                <Card.Group itemsPerRow={4}>
+                    {!isReady ? 'Loading...' : items.map(book => (
+                        <BookCard key={book.id} {...book}/>
+                    ))}
+                </Card.Group>
+            </Container>
+
     );
 }
 

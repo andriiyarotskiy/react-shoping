@@ -1,9 +1,11 @@
 import React from 'react';
 import {Input, Menu} from 'semantic-ui-react'
-import {useSelector} from "react-redux";
+import {useSelectCtxt} from "../ContextProvider/ContextProvider";
 
 const Filter = React.memo(({filterBy, handleItemClick,onChangeHandler}) => {
-    const searchQuery = useSelector(state => state.filter.searchQuery)
+
+    const state = useSelectCtxt()
+    const searchQuery = state.filter.searchQuery
 
 
     return (

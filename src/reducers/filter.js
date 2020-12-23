@@ -1,9 +1,4 @@
-const initialState = {
-    searchQuery: '',
-    filterBy: 'all'
-}
-
-export const filterReducer = (state = initialState, action) => {
+export const filterReducer = (state , action) => {
     switch (action.type) {
         case 'SET_QUERY': {
             return {
